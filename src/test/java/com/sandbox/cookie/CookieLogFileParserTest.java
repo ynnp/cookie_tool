@@ -78,7 +78,7 @@ public class CookieLogFileParserTest {
     }
 
     @Test
-    void parseFileOfCookies_null_throwsIllegalArgumentException() {
+    void parseFileOfCookies_nullAsCookieLogFile_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> parseFileOfCookies(null));
     }
 
@@ -96,7 +96,7 @@ public class CookieLogFileParserTest {
     }
 
     @Test
-    void parseFileOfCookies_directoryInsteadOfFile_throwsIllegalArgumentException() {
+    void parseFileOfCookies_directoryAsCookieLogFile_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> parseFileOfCookies(temporaryDirectory));
     }
 }

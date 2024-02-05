@@ -67,7 +67,7 @@ public class CookieStatAnalyserTest {
     }
 
     @Test
-    void getCookiesByDate_null_returnsEmptyList() {
+    void getCookiesByDate_nullAsDate_returnsEmptyList() {
         assertEquals(new ArrayList<>(), cookieStatsAnalyser.getCookiesByDate(null));
     }
 
@@ -91,7 +91,19 @@ public class CookieStatAnalyserTest {
     }
 
     @Test
-    void getMostActiveCookies_null_returnsEmptyList() {
+    void getMostActiveCookies_nullAsDate_returnsEmptyList() {
         assertEquals(new ArrayList<>(), cookieStatsAnalyser.getMostActiveCookies(null));
+    }
+
+    @Test
+    void getMostActiveCookies_cookieStatsAnalyserWithEmptyLogs_returnsEmptyList() {
+        CookieStatsAnalyser cookieStatsAnalyser1 = new CookieStatsAnalyser(new ArrayList<>());
+        assertEquals(new ArrayList<>(), cookieStatsAnalyser1.getMostActiveCookies(VALID_DATE_1.toLocalDate()));
+    }
+
+    @Test
+    void getMostActiveCookies_cookieStatsAnalyserWithNullAsLogs_returnsEmptyList() {
+        CookieStatsAnalyser cookieStatsAnalyser1 = new CookieStatsAnalyser(null);
+        assertEquals(new ArrayList<>(), cookieStatsAnalyser1.getMostActiveCookies(VALID_DATE_1.toLocalDate()));
     }
 }

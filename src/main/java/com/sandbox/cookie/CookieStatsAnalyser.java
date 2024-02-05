@@ -14,7 +14,7 @@ import java.util.PriorityQueue;
  * Analyser of cookie statistics.
  */
 public class CookieStatsAnalyser {
-    private static final Map<LocalDate, List<CookieLog>> cookiesByDate = new HashMap<>();
+    private final Map<LocalDate, List<CookieLog>> cookiesByDate = new HashMap<>();
 
     /**
      * Constructor to initialize analyser with list of CookieLog.
@@ -22,8 +22,10 @@ public class CookieStatsAnalyser {
      * @param cookieLogs list of cookie logs to work with.
      */
     public CookieStatsAnalyser(List<CookieLog> cookieLogs) {
-        for (CookieLog cookieLog: cookieLogs) {
-            addCookieLog(cookieLog);
+        if (cookieLogs != null && !cookieLogs.isEmpty()) {
+            for (CookieLog cookieLog: cookieLogs) {
+                addCookieLog(cookieLog);
+            }
         }
     }
 
@@ -40,9 +42,9 @@ public class CookieStatsAnalyser {
     }
 
     /**
-     * Adds CookieLog entry to map by date.
+     * Adds CookieLog entry for further use in calculating statistics.
      *
-     * @param cookieLog CookieLog entry to be added to map.
+     * @param cookieLog CookieLog entry to be added.
      */
     public void addCookieLog(CookieLog cookieLog) {
         LocalDate date = cookieLog.getTimestamp().toLocalDate();
