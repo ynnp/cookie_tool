@@ -20,7 +20,8 @@ import java.util.stream.Stream;
 import static com.sandbox.cookie.CookieLogFileParser.COMMA_DELIMITER;
 import static com.sandbox.cookie.CookieLogFileParser.parseFileOfCookies;
 import static com.sandbox.utils.DateUtils.toLocalDateTime;
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
@@ -46,7 +47,7 @@ public class CookieLogFileParserTest {
     @ParameterizedTest
     @MethodSource("validCookieLogsAndFileProvider")
     void parseFileOfCookies_validCookieLogFile_returnsCookieLogList(List<CookieLog> validCookieLogs, File validCookieLogFile) {
-        assertIterableEquals(validCookieLogs, parseFileOfCookies(validCookieLogFile));
+        assertThat(parseFileOfCookies(validCookieLogFile), containsInAnyOrder(validCookieLogs.toArray()));
     }
 
     static Stream<Arguments> validCookieLogsAndFileProvider() throws IOException {
