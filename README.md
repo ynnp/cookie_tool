@@ -10,5 +10,7 @@ Usage:
 
 `cookie --file {filename} --date {date}`
 
-For more convenient use, there is a bash script with set of input parameters. Just run:
+For more convenient use, there is a bash script with set of input parameters. 
+Bash script requires jar file and log file in csv format, both can be found in the repository.
+To execute the script, run:
 `./run_cookie_tool.sh`
